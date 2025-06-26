@@ -1,6 +1,6 @@
 | Tech                    | Description                    |
 | ----------------------- | ------------------------------ |
-| Node.js + Express       | Backend framework              |
+| Node.js + (ES Modules) Express       | Backend framework |
 | MongoDB + Mongoose      | NoSQL database                 |
 | Passport.js             | Authentication (local & OAuth) |
 | Nodemailer              | Email OTP Verification         |
@@ -17,7 +17,7 @@
 /middleware      - Auth & validation middleware
 /config          - Environment configs (DB, mail,)
 /utils           - Helper functions
-server.js        - Main app entry
+server.mjs        - Main app entry
 .env             - Environment variables
 
 

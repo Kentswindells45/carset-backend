@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const bookingSchema = new mongoose.Schema(
   {
@@ -14,11 +14,6 @@ const bookingSchema = new mongoose.Schema(
     },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
-    durationType: {
-      type: String,
-      enum: ["hourly", "daily", "long-term"],
-      default: "daily",
-    },
     totalPrice: { type: Number, required: true },
     status: {
       type: String,
@@ -29,4 +24,5 @@ const bookingSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Booking", bookingSchema);
+const Booking = mongoose.model("Booking", bookingSchema);
+export default Booking;

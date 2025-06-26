@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const vehicleSchema = new mongoose.Schema(
   {
@@ -23,5 +23,6 @@ const vehicleSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports =
+const Vehicle =
   mongoose.models.Vehicle || mongoose.model("Vehicle", vehicleSchema);
+export default Vehicle;

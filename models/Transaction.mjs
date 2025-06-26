@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const transactionSchema = new mongoose.Schema(
   {
@@ -12,15 +12,10 @@ const transactionSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    owner: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+    amount: {
+      type: Number,
       required: true,
     },
-    driver: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    amountPaid: { type: Number, required: true },
-    ownerCommission: { type: Number, required: true },
-    driverCommission: { type: Number, default: 0 },
     paymentMethod: {
       type: String,
       enum: ["stripe", "flutterwave"],
@@ -28,11 +23,16 @@ const transactionSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["pending", "success", "failed"],
+      enum: ["pending", "paid", "failed"],
       default: "pending",
+    },
+    commission: {
+      type: Number,
+      default: 0,
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Transaction", transactionSchema);
+const Transaction = mongoose.model("Transaction", transactionSchema);
+export default Transaction;

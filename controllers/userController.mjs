@@ -1,9 +1,9 @@
-const User = require("../models/user");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const sendOtp = require("../utils/sendOtp");
+import User from "../models/user.mjs";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import sendOtp from "../utils/sendOTP.mjs";
 
-const register = async (req, res) => {
+export const register = async (req, res) => {
   try {
     const { fullName, email, password, role } = req.body;
 
@@ -25,7 +25,7 @@ const register = async (req, res) => {
       password: hashedPassword,
       role,
       otp,
-      otpExpires: Date.now() + 10 * 60 * 1000,
+      otpExpires: Date.now() + 10 * 60 * 1000, 
     });
 
     await sendOtp(email, otp);
@@ -37,8 +37,7 @@ const register = async (req, res) => {
   }
 };
 
-
-const verifyOtp = async (req, res) => {
+export const verifyOtp = async (req, res) => {
   try {
     const { email, otp } = req.body;
 
@@ -70,8 +69,7 @@ const verifyOtp = async (req, res) => {
   }
 };
 
-
-const login = async (req, res) => {
+export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -104,10 +102,4 @@ const login = async (req, res) => {
     console.error("Login error:", err.message);
     res.status(500).json({ message: "Internal server error" });
   }
-};
-
-module.exports = {
-  register,
-  verifyOtp,
-  login,
 };
