@@ -73,11 +73,9 @@ export const getMostBookedVehicles = async (req, res) => {
 
     res.json({ vehicles, counts: bookings });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Failed to fetch most booked vehicles",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Failed to fetch most booked vehicles",
+      error: error.message,
+    });
   }
 };
