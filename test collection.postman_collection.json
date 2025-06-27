@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "903c4cfc-0183-4785-92d5-f65f12fbc13b",
+		"name": "test collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45517180",
+		"_collection_link": "https://jamiedev-6187468.postman.co/workspace/Jamie-Dev's-Workspace~6ebfe164-ad78-40dc-85e4-c963b0c773c4/collection/45517180-903c4cfc-0183-4785-92d5-f65f12fbc13b?action=share&source=collection_link&creator=45517180"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5000/api/users/register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Oppong Kelvin\",\r\n  \"email\": \"oppongkevin1@gmail.com\",\r\n  \"password\": \"sgitaqqspkgtiupz\",\r\n  \"role\": \"client\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/users/verify-otp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"oppongkevin1@gmail.com\",\r\n  \"otp\": \"830803\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/verify-otp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"verify-otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/users/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"oppongkevin1@gmail.com\",\r\n  \"password\": \"sgitaqqspkgtiupz\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/vehicles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWRiMWEwY2M4Y2JlMTFmMDkzYjUzMCIsImVtYWlsIjoib3Bwb25na2V2aW4xQGdtYWlsLmNvbSIsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE3NTA5NzIwMDcsImV4cCI6MTc1MTU3NjgwN30.S9aw6eJGAIAPp2mznQI36os-vgWack2GCUMsbI45Ci0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"make\": \"Nissan\",\r\n  \"model\": \"Patrol\",\r\n  \"year\": 2022,\r\n  \"type\": \"new\",\r\n  \"pricePerDay\": 150,\r\n  \"specs\": {\r\n    \"seats\": 7,\r\n    \"transmission\": \"automatic\",\r\n    \"fuel\": \"petrol\",\r\n    \"color\": \"white\"\r\n  },\r\n  \"images\": [\r\n    \"https://example.com/nissan1.jpg\"\r\n  ],\r\n  \"location\": \"Accra, Ghana\",\r\n  \"description\": \"Luxury 4x4 with spacious interior, ideal for long trips.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/vehicles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/vehicles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/vehicles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/vehicles/685db8aad478ce5f05d8a3b0",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/vehicles/685db8aad478ce5f05d8a3b0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"vehicles",
+						"685db8aad478ce5f05d8a3b0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/bookings",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWRiMWEwY2M4Y2JlMTFmMDkzYjUzMCIsImVtYWlsIjoib3Bwb25na2V2aW4xQGdtYWlsLmNvbSIsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE3NTA5NzIwMDcsImV4cCI6MTc1MTU3NjgwN30.S9aw6eJGAIAPp2mznQI36os-vgWack2GCUMsbI45Ci0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"vehicle\": \"685e7ba45f6b4749583cd1ca\",\r\n  \"startDate\": \"2025-07-01\",\r\n  \"endDate\": \"2025-07-03\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/bookings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
