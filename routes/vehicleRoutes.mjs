@@ -13,6 +13,6 @@ const router = express.Router();
 router.get("/", getAllVehicles);
 router.get("/:id", getVehicleById);
 
-router.post("/", protect, restrictTo("owner"), createVehicle);
+router.post("/", protect, restrictTo("owner", "client"), createVehicle);
 
 export default router;

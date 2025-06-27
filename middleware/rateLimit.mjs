@@ -1,15 +1,9 @@
-import arcjet from "@arcjet/node";
+import rateLimit from "express-rate-limit";
 
-const arc = arcjet({
-  token: process.env.ARCJET_API_KEY,
-  rules: [
-    {
-      key: (req) => req.ip,
-      limit: 100,
-      window: 60,
-    },
-  ],
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, 
+  max: 100, 
+  message: { message: "Too many requests, please try again later." },
 });
 
-
-export default arc.protect;
+export default limiter;

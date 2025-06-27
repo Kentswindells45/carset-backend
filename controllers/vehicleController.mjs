@@ -1,54 +1,35 @@
+import mongoose from "mongoose";
 import Vehicle from "../models/vehicle.mjs";
 
 export const createVehicle = async (req, res) => {
   try {
-    const {
-      make,
-      model,
-      year,
-      type,
-      pricePerDay,
-      location,
-      description,
-      images,
-    } = req.body;
-
-    const vehicle = await Vehicle.create({
+    const vehicleData = {
+      ...req.body,
       owner: req.user._id,
-      make,
-      model,
-      year,
-      type,
-      pricePerDay,
-      location,
-      description,
-      images,
-    });
+    };
 
+    const vehicle = new Vehicle(vehicleData);
+    await vehicle.save();
     res.status(201).json(vehicle);
-  } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Failed to create vehicle", error: err.message });
+  } catch (error) {
+    res.status(400).json({ message: "Failed to create vehicle", error: error.message });
   }
 };
 
 export const getAllVehicles = async (req, res) => {
   try {
-    const vehicles = await Vehicle.find({ available: true }).populate(
-      "owner",
-      "fullName email"
-    );
+    const vehicles = await Vehicle.find().populate("owner", "fullName email");
     res.json(vehicles);
-  } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Failed to fetch vehicles", error: err.message });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch vehicles", error: error.message });
   }
 };
 
 export const getVehicleById = async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: "Invalid vehicle ID" });
+    }
     const vehicle = await Vehicle.findById(req.params.id).populate(
       "owner",
       "fullName email"
@@ -59,5 +40,6 @@ export const getVehicleById = async (req, res) => {
     res
       .status(500)
       .json({ message: "Error fetching vehicle", error: err.message });
+      
   }
 };

@@ -9,6 +9,10 @@ export default function initialize(passport) {
         const user = await User.findOne({ email });
         if (!user) return done(null, false, { message: "No user found" });
 
+        if (!user.verified) {
+          return done(null, false, { message: "Account not verified. Please verify your email." });
+        }
+
         const match = await bcrypt.compare(password, user.password);
         return match ? done(null, user) : done(null, false, { message: "Incorrect password" });
       } catch (err) {

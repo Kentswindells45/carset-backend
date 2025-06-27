@@ -1,4 +1,5 @@
 import express from "express";
+import passport from "passport";
 import {
   registerUser,
   verifyOTP,
@@ -9,6 +10,6 @@ const router = express.Router();
 
 router.post("/register", registerUser);
 router.post("/verify-otp", verifyOTP);
-router.post("/login", loginWithPassport); // <-- and here
+router.post("/login", passport.authenticate("local"), loginWithPassport); // <-- and here
 
 export default router;
